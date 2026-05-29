@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Yifan Han | Academic Homepage</title>
+    <meta
+      name="description"
+      content="Yifan Han academic homepage: research, publications, and experience in robotic manipulation and embodied intelligence."
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap");
+
+      :root {
+        --bg: #f4f1ec;
+        --ink: #111317;
+        --muted: #4b515a;
+        --accent: #2a5b52;
+        --accent-2: #c46b2b;
+        --card: #fffaf2;
+        --card-border: rgba(17, 19, 23, 0.12);
+        --shadow: 0 18px 40px rgba(17, 19, 23, 0.12);
+        --shadow-soft: 0 10px 24px rgba(17, 19, 23, 0.1);
+        --max-width: 1100px;
+        --radius: 18px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+        background: radial-gradient(circle at top, #f8f3ea 0%, #f4f1ec 60%),
+          linear-gradient(135deg, rgba(42, 91, 82, 0.08), transparent 40%);
+        color: var(--ink);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .page::before,
+      .page::after {
+        content: "";
+        position: absolute;
+        border-radius: 999px;
+        filter: blur(0.5px);
+        opacity: 0.25;
+        z-index: 0;
+      }
+
+      .page::before {
+        width: 520px;
+        height: 520px;
+        background: radial-gradient(circle, rgba(42, 91, 82, 0.3), transparent 70%);
+        top: -200px;
+        left: -120px;
+      }
+
+      .page::after {
+        width: 420px;
+        height: 420px;
+        background: radial-gradient(circle, rgba(196, 107, 43, 0.3), transparent 70%);
+        bottom: -140px;
+        right: -120px;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        backdrop-filter: blur(10px);
+        background: rgba(244, 241, 236, 0.9);
+        z-index: 10;
+        border-bottom: 1px solid rgba(17, 19, 23, 0.08);
+      }
+
+      .nav {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 18px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav .logo {
+        font-family: "Crimson Pro", "Times New Roman", serif;
+        font-size: 1.3rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 18px;
+        font-size: 0.95rem;
+        color: var(--muted);
+      }
+
+      .nav-links a {
+        position: relative;
+        padding-bottom: 4px;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background: var(--accent);
+        transition: width 0.25s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      main {
+        position: relative;
+        z-index: 1;
+      }
+
+      section {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 60px 24px 10px;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(240px, 1fr) minmax(260px, 1.1fr);
+        gap: 32px;
+        align-items: center;
+        padding-top: 80px;
+      }
+
+      .hero h1 {
+        font-family: "Crimson Pro", "Times New Roman", serif;
+        font-size: clamp(2.4rem, 4vw, 3.8rem);
+        margin: 0 0 12px;
+      }
+
+      .hero p {
+        margin: 0 0 20px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .hero-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .tag {
+        border: 1px solid rgba(17, 19, 23, 0.15);
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        background: rgba(255, 255, 255, 0.7);
+      }
+
+      .hero-card {
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        border-radius: var(--radius);
+        padding: 24px;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .hero-card h2 {
+        font-size: 1.1rem;
+        margin: 0 0 12px;
+        color: var(--accent);
+      }
+
+      .hero-card ul {
+        margin: 0;
+        padding-left: 18px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .contact-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 20px;
+      }
+
+      .contact-pill {
+        background: #111317;
+        color: #fff;
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-size: 0.85rem;
+      }
+
+      .grid {
+        display: grid;
+        gap: 20px;
+      }
+
+      .paper-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .paper-card {
+        position: relative;
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: var(--shadow-soft);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .paper-card.horizontal {
+        display: grid;
+        grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+        gap: 20px;
+        align-items: start;
+      }
+
+      .paper-detail {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .paper-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow);
+      }
+
+      .paper-card.floating {
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .paper-card:nth-child(2n) {
+        animation-delay: 1.2s;
+      }
+
+      .paper-card:nth-child(3n) {
+        animation-delay: 2.1s;
+      }
+
+      .paper-title {
+        font-weight: 600;
+        font-size: 1.02rem;
+        margin-bottom: 10px;
+      }
+
+      .paper-authors {
+        color: var(--muted);
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+      }
+
+      .paper-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        font-size: 0.8rem;
+      }
+
+      #publications .paper-title {
+        font-size: 1.2rem;
+      }
+
+      #publications .paper-authors {
+        font-size: 1rem;
+      }
+
+      #publications .paper-meta {
+        font-size: 0.9rem;
+      }
+
+      #publications .author-highlight {
+        background: #ffe57a;
+        font-weight: 700;
+        padding: 0 4px;
+        border-radius: 6px;
+        color: #111317;
+        display: inline-block;
+      }
+
+      #publications .paper-card p {
+        margin: 10px 0 0;
+        color: var(--muted);
+        line-height: 1.6;
+        font-size: 0.98rem;
+      }
+
+      .badge {
+        padding: 4px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(17, 19, 23, 0.2);
+        background: rgba(42, 91, 82, 0.1);
+        color: var(--accent);
+      }
+
+      .badge.secondary {
+        background: rgba(196, 107, 43, 0.1);
+        color: var(--accent-2);
+      }
+
+      .section-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .section-title h2 {
+        font-family: "Crimson Pro", "Times New Roman", serif;
+        font-size: 1.9rem;
+        margin: 0;
+      }
+
+      .section-title span {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 14px;
+      }
+
+      .timeline-card {
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid var(--card-border);
+        border-radius: 16px;
+        padding: 18px 20px;
+      }
+
+      .timeline-card h3 {
+        margin: 0 0 6px;
+        font-size: 1.05rem;
+      }
+
+      .timeline-card p {
+        margin: 6px 0;
+        color: var(--muted);
+      }
+
+      .timeline-card ul {
+        margin: 8px 0 0;
+        padding-left: 18px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .inline-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        color: var(--muted);
+      }
+
+      .split {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      }
+
+      footer {
+        max-width: var(--max-width);
+        margin: 40px auto 60px;
+        padding: 0 24px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @media (max-width: 860px) {
+        .nav {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        #publications .paper-card.horizontal {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .paper-card.floating {
+          animation: none;
+        }
+
+        .paper-card:hover {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div class="nav">
+          <div class="logo">Yifan Han</div>
+          <nav class="nav-links">
+            <a href="#research">Research</a>
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
+            <a href="#publications">Publications</a>
+            <a href="#service">Service</a>
+            <a href="#skills">Skills</a>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero" id="research">
+          <div>
+            <h1>Yifan Han</h1>
+            <p>
+              M.Res. candidate at CASIA and research assistant at SJTU, working on
+              dexterous manipulation, affordance learning, and embodied
+              perception for robotic systems.
+            </p>
+            <div class="hero-tags">
+              <span class="tag">Dexterous Manipulation</span>
+              <span class="tag">Affordance Learning</span>
+              <span class="tag">VLA Systems</span>
+              <span class="tag">Active Perception</span>
+            </div>
+            <div class="contact-row">
+              <span class="contact-pill">hanyifan2024@ia.ac.cn</span>
+              <span class="contact-pill">Beijing / Shanghai</span>
+            </div>
+          </div>
+          <div class="hero-card">
+            <h2>Research Focus</h2>
+            <ul>
+              <li>
+                Dexterous-hand policy learning and RL-based post-training for
+                real-world deployment.
+              </li>
+              <li>
+                Tool-target affordance modeling for transferring human
+                demonstrations to robots.
+              </li>
+              <li>
+                Active perception and grounding modules for embodied
+                manipulation.
+              </li>
+            </ul>
+            <div class="contact-row">
+              <a class="contact-pill" href="https://hirol.sjtu.edu.cn/team/hanyifan.html">Homepage</a>
+              <a class="contact-pill" href="https://scholar.google.com/citations?user=J0nXM5UAAAAJ&hl=zh-CN">Google Scholar</a>
+              <a class="contact-pill" href="https://openreview.net/profile?id=%7EYifan_Han1">OpenReview</a>
+            </div>
+          </div>
+        </section>
+
+        <section id="education">
+          <div class="section-title">
+            <h2>Education</h2>
+            <span>Academic training</span>
+          </div>
+          <div class="timeline">
+            <div class="timeline-card">
+              <h3>Institute of Automation, Chinese Academy of Sciences</h3>
+              <p>M.Res. Candidate, National Laboratory of Pattern Recognition</p>
+              <p>GPA: 3.85/4.00 | 2023 - 2025 | Beijing, China</p>
+              <p>Supervisor: Prof. Wenzhao Lian</p>
+            </div>
+            <div class="timeline-card">
+              <h3>Shanghai Jiao Tong University</h3>
+              <p>Research Assistant, School of Artificial Intelligence</p>
+              <p>2025 - Present | Shanghai, China</p>
+              <p>Supervisors: Prof. Wenzhao Lian, Prof. Yao Mu</p>
+            </div>
+            <div class="timeline-card">
+              <h3>Huazhong University of Science and Technology</h3>
+              <p>B.Eng., School of Artificial Intelligence and Automation</p>
+              <p>GPA: 3.78/4.00 | 2020 - 2024 | Wuhan, China</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="experience">
+          <div class="section-title">
+            <h2>Research Experience</h2>
+            <span>Selected roles</span>
+          </div>
+          <div class="timeline">
+            <div class="timeline-card">
+              <h3>Research Assistant | SJTU</h3>
+              <p>
+                School of Artificial Intelligence, Shanghai, China (2025 -
+                Present)
+              </p>
+              <p>Advisors: Prof. Wenzhao Lian, Prof. Yao Mu</p>
+              <ul>
+                <li>
+                  Conduct research in dexterous manipulation and affordance
+                  learning, including policy learning and RL post-training.
+                </li>
+                <li>
+                  Contribute to active perception, VLA-based robotic systems,
+                  and MLLM grounding modules for embodied manipulation tasks.
+                </li>
+              </ul>
+            </div>
+            <div class="timeline-card">
+              <h3>Research Student | CASIA</h3>
+              <p>
+                NLPR, Institute of Automation, Beijing, China (2023 - 2025)
+              </p>
+              <p>Advisor: Prof. Wenzhao Lian</p>
+              <ul>
+                <li>
+                  Worked on learning-based robot manipulation, including
+                  multi-task imitation learning and long-horizon manipulation.
+                </li>
+                <li>
+                  Contributed to human-to-robot skill transfer, affordance-centric
+                  manipulation, and active robotic perception.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="publications">
+          <div class="section-title">
+            <h2>Publications</h2>
+          </div>
+
+          <h3>First-Author or Co-First</h3>
+          <div class="grid paper-grid" style="margin-top: 12px;">
+            <article class="paper-card floating horizontal">
+              <div class="paper-main">
+                <div class="paper-title">
+                  BORA: Bridging Offline Reinforcement Learning and Online Residual
+                  Adaptation for Real-World Dexterous VLA Models
+                </div>
+                <div class="paper-authors">
+                  Zhongxi Chen, <span class="author-highlight">Yifan Han</span>,
+                  Yanming Shao, Huanming Liu, Congsheng Xu, Yao Mu, Wenzhao Lian
+                </div>
+              </div>
+              <div class="paper-detail">
+                <div class="paper-meta">
+                  <span class="badge">Under Review</span>
+                  <span class="badge secondary">Equal contribution</span>
+                  <span class="badge secondary">Project leader</span>
+                </div>
+                <p>
+                  Bridges offline token-action reinforcement learning with online
+                  residual adaptation for robust real-world dexterous VLA
+                  deployment.
+                </p>
+              </div>
+            </article>
+
+            <article class="paper-card floating horizontal">
+              <div class="paper-main">
+                <div class="paper-title">
+                  BridgeACT: Bridging Human Demonstrations to Robot Actions via
+                  Unified Tool-Target Affordances
+                </div>
+                <div class="paper-authors">
+                  <span class="author-highlight">Yifan Han</span>, Jianxiang Liu,
+                  Haoyu Zhang, Yuqi Gu, Hanqing Wang, Zhongxi Chen, Litao Liu,
+                  Wenzhao Lian
+                </div>
+              </div>
+              <div class="paper-detail">
+                <div class="paper-meta">
+                  <span class="badge">Under Review</span>
+                  <span class="badge secondary">Project leader</span>
+                </div>
+                <p>
+                  Introduces role-conditioned tool-target affordances as an
+                  embodiment-agnostic representation for transferring manipulation
+                  knowledge from human videos to robots.
+                </p>
+              </div>
+            </article>
+
+            <article class="paper-card floating horizontal">
+              <div class="paper-main">
+                <div class="paper-title">
+                  Affordance2Action: A Benchmark and Framework for Task-Conditioned
+                  Part Affordance Grounding in Real-Time Robot Manipulation
+                </div>
+                <div class="paper-authors">
+                  Litao Liu, <span class="author-highlight">Yifan Han</span>,
+                  Pengfei Yi, Wenbo Yu, Hanqing Wang, Haoran Du, Enze Yuan,
+                  Zilin Yuan, Ruiding Feng, Michael Liu, Qi Zhang, Jingjin Yu
+                </div>
+              </div>
+              <div class="paper-detail">
+                <div class="paper-meta">
+                  <span class="badge">Under Review</span>
+                  <span class="badge secondary">Equal contribution</span>
+                  <span class="badge secondary">Project leader</span>
+                </div>
+                <p>
+                  Builds a benchmark and real-time framework for task-conditioned
+                  part affordance grounding in robot manipulation.
+                </p>
+              </div>
+            </article>
+
+            <article class="paper-card floating horizontal">
+              <div class="paper-main">
+                <div class="paper-title">
+                  DexHiL: A Human-in-the-Loop Framework for Vision-Language-Action
+                  Model Post-Training in Dexterous Manipulation
+                </div>
+                <div class="paper-authors">
+                  <span class="author-highlight">Yifan Han</span>, Zhongxi Chen,
+                  Yuxuan Zhao, Congsheng Xu, Yanming Shao, Yichuan Peng, Yao Mu,
+                  Wenzhao Lian
+                </div>
+              </div>
+              <div class="paper-detail">
+                <div class="paper-meta">
+                  <span class="badge">Under Review</span>
+                  <span class="badge secondary">Equal contribution</span>
+                </div>
+                <p>
+                  Builds a human-in-the-loop post-training framework for
+                  dexterous-manipulation VLA models, combining human feedback and
+                  policy optimization.
+                </p>
+              </div>
+            </article>
+
+            <article class="paper-card floating horizontal">
+              <div class="paper-main">
+                <div class="paper-title">
+                  FSAG: Enhancing Human-to-Dexterous-Hand Finger-Specific
+                  Affordance Grounding via Diffusion Models
+                </div>
+                <div class="paper-authors">
+                  <span class="author-highlight">Yifan Han</span>, Yichuan Peng,
+                  Pengfei Yi, Junyan Li, Hanqing Wang, Gaojing Zhang, Qi Peng Liu,
+                  Wenzhao Lian
+                </div>
+              </div>
+              <div class="paper-detail">
+                <div class="paper-meta">
+                  <span class="badge">Under Review</span>
+                </div>
+                <p>
+                  Studies finger-specific affordance grounding from human hands to
+                  dexterous hands using diffusion models.
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <h3 style="margin-top: 34px;">Main Contributor</h3>
+          <div class="grid paper-grid" style="margin-top: 12px;">
+            <article class="paper-card horizontal">
+              <div class="paper-main">
+                <div class="paper-title">
+                  FOAM: Foresight-Augmented Multi-Task Imitation Policy for Robotic
+                  Manipulation
+                </div>
+                <div class="paper-authors">
+                  Litao Liu, Wentao Wang, <span class="author-highlight">Yifan Han</span>,
+                  Zhuoli Xie, Pengfei Yi, Junyan Li, Yi Qin, Wenzhao Lian
+                </div>
+              </div>
+              <div class="paper-detail">
+                <div class="paper-meta">
+                  <span class="badge">AAAI 2026</span>
+                  <span class="badge secondary">Oral Presentation</span>
+                </div>
+                <p>
+                  Contributed to foresight-augmented multi-task imitation learning,
+                  introducing task-progress prediction and visual representations
+                  to improve generalization in robotic manipulation.
+                </p>
+              </div>
+            </article>
+
+            <article class="paper-card horizontal">
+              <div class="paper-main">
+                <div class="paper-title">
+                  Splatter Joint: 3D Gaussian Splatting for Articulated Objects
+                </div>
+                <div class="paper-authors">
+                  Junyan Li, <span class="author-highlight">Yifan Han</span>,
+                  Pengfei Yi, Wenzhao Lian
+                </div>
+              </div>
+              <div class="paper-detail">
+                <div class="paper-meta">
+                  <span class="badge">IROS 2025</span>
+                </div>
+                <p>
+                  Contributed to 3D Gaussian Splatting for articulated-object
+                  modeling, focusing on movable-part representation, structural
+                  understanding, and view-consistent reconstruction.
+                </p>
+              </div>
+            </article>
+
+            <article class="paper-card horizontal">
+              <div class="paper-main">
+                <div class="paper-title">
+                  SAGE: Scene Graph-Aware Guidance and Execution for Long-Horizon
+                  Manipulation Tasks
+                </div>
+                <div class="paper-authors">
+                  Jialiang Li, Wenzheng Wu, Gaojing Zhang,
+                  <span class="author-highlight">Yifan Han</span>, Wenzhao Lian
+                </div>
+              </div>
+              <div class="paper-detail">
+                <div class="paper-meta">
+                  <span class="badge">ICRA 2026</span>
+                </div>
+                <p>
+                  Contributed to a scene-graph-guided long-horizon manipulation
+                  framework that integrates object-relation modeling with
+                  execution planning for complex multi-stage tasks.
+                </p>
+              </div>
+            </article>
+
+            <article class="paper-card horizontal">
+              <div class="paper-main">
+                <div class="paper-title">
+                  Affordance-R1: Reinforcement Learning for Generalizable
+                  Affordance Reasoning in Multimodal Large Language Models
+                </div>
+                <div class="paper-authors">
+                  Hanging Wang, Shaoyang Wang, Yiming Zhong, Zemin Yang, Jiamin
+                  Wang, Zhiqing Cui, Jiahao Yuan,
+                  <span class="author-highlight">Yifan Han</span>, Mingyu Liu,
+                  Yuexin Ma
+                </div>
+              </div>
+              <div class="paper-detail">
+                <div class="paper-meta">
+                  <span class="badge">AAAI 2026</span>
+                  <span class="badge secondary">Oral Presentation</span>
+                </div>
+                <p>
+                  Contributed to a reinforcement-learning framework for
+                  affordance reasoning in MLLMs, improving generalizable
+                  operation-region understanding across objects and scenes.
+                </p>
+              </div>
+            </article>
+
+            <article class="paper-card horizontal">
+              <div class="paper-main">
+                <div class="paper-title">
+                  Look, Zoom, Understand: The Robotic Eyeball for Embodied
+                  Perception
+                </div>
+                <div class="paper-authors">
+                  Jiashu Yang, <span class="author-highlight">Yifan Han</span>,
+                  Yucheng Xie, Ning Guo, Wenzhao Lian
+                </div>
+              </div>
+              <div class="paper-detail">
+                <div class="paper-meta">
+                  <span class="badge">Preprint</span>
+                  <span class="badge secondary">2025</span>
+                </div>
+                <p>
+                  Contributed to an active embodied perception system that
+                  improves robot understanding of task-relevant regions and object
+                  details through viewpoint adjustment and local observation.
+                </p>
+              </div>
+            </article>
+
+            <article class="paper-card horizontal">
+              <div class="paper-main">
+                <div class="paper-title">
+                  Viewpoint Matters: Dynamically Optimizing Viewpoints with Masked
+                  Autoencoder for Visual Manipulation
+                </div>
+                <div class="paper-authors">
+                  Pengfei Yi, <span class="author-highlight">Yifan Han</span>,
+                  Junyan Li, Litao Liu, Wenzhao Lian
+                </div>
+              </div>
+              <div class="paper-detail">
+                <div class="paper-meta">
+                  <span class="badge">Preprint</span>
+                  <span class="badge secondary">2026</span>
+                </div>
+                <p>
+                  Contributed to MAE-based dynamic viewpoint optimization,
+                  analyzing and improving the robustness of visual manipulation
+                  policies under changing viewpoints.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="service">
+          <div class="section-title">
+            <h2>Academic Service</h2>
+            <span>Reviewer</span>
+          </div>
+          <ul class="inline-list">
+            <li>IROS</li>
+            <li>ICRA</li>
+            <li>IEEE RA-L</li>
+            <li>AAAI</li>
+            <li>CVPR</li>
+            <li>ECCV</li>
+          </ul>
+        </section>
+
+        <section id="skills">
+          <div class="section-title">
+            <h2>Skills</h2>
+            <span>Technical strengths</span>
+          </div>
+          <div class="split">
+            <div class="timeline-card">
+              <h3>Programming</h3>
+              <p>Proficient: Python, MATLAB, C, LaTeX</p>
+              <p>Advanced: C++, JavaScript</p>
+            </div>
+            <div class="timeline-card">
+              <h3>Software</h3>
+              <p>MuJoCo, Isaac Sim, SolidWorks, Adobe Photoshop, MS Office</p>
+            </div>
+            <div class="timeline-card">
+              <h3>Hardware</h3>
+              <p>Robots: Franka, Xarm Robots, Universal Robots</p>
+              <p>Other: 51 MCU, STM32, RealSense, Orbbec Camera</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="honors">
+          <div class="section-title">
+            <h2>Honors and Awards</h2>
+            <span>Selected</span>
+          </div>
+          <div class="timeline">
+            <div class="timeline-card">
+              <h3>National Robotics Competition (ROBOCON)</h3>
+              <p>National First Prize and Third Place Overall (2022)</p>
+              <p>National First Prize, Robot Equestrian Event (2022)</p>
+              <p>National First Prize (2023)</p>
+              <p>National Third Prize, Robot Equestrian Event (2023)</p>
+            </div>
+            <div class="timeline-card">
+              <h3>China University Intelligent Robot Creativity Competition</h3>
+              <p>National Second Prize (2022)</p>
+            </div>
+            <div class="timeline-card">
+              <h3>Huazhong University of Science and Technology</h3>
+              <p>Self-Improvement Scholarship (2022)</p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <p>
+          This page is a concise academic profile. Replace the link placeholders
+          with official URLs when available.
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
